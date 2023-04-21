@@ -119,7 +119,7 @@ int Ford_Fulkerson(Graph& graph) {
     vector < int > way = graph.Dijkstra(0, graph.VERTICES_NUM - 1);
     while (!way.empty()) {
         int min = INT_MAX;
-        // Находим минимальное ребро в минимальном пути.
+        // Находим минимальное ребро в кратчайшем пути.
         for (int i = 1; i < way.size(); i++) {
             if (min > graph.weight(way[i - 1], way[i]) && graph.weight(way[i - 1], way[i]) != -1)
                 min = graph.weight(way[i - 1], way[i]);
@@ -164,7 +164,7 @@ void check_vertices(Graph graph, int s, vector <bool>& visited) {
 void minCut(Graph graph, int s, int t)
 {
     Graph rGraph(graph.Edges);
-    // Прогоняем алгоритм Форда-Фалкерсона, и работаем с измененным графом.
+    // Прогоняем алгоритм Форда-Фалкерсона и работаем с измененным графом.
     Ford_Fulkerson(rGraph);
 
     // Проверяем все задействованные вершины.
